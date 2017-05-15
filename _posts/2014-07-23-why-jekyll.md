@@ -1,11 +1,14 @@
 ---
+title: Why Jekyll?
+date: 2014-07-23 00:00:00 +06:00
+categories:
+- webdevelopment
+tags:
+- jekyll
 layout: post
-title: "Why Jekyll?"
 description: 
 headline: 
-modified: 2014-07-23
-category: webdevelopment
-tags: [jekyll]
+modified: 2014-07-23 06:00:00 +06:00
 imagefeature: 
 mathjax: 
 chart: 
