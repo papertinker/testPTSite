@@ -1,0 +1,82 @@
+---
+title: Site Title
+timezone: America/New_York
+collections:
+  pages:
+    title: Pages
+    output: true
+    permalink: "/:title"
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+description: Site description for the metas.
+logo: omikron.png
+disqus_shortname: shortname
+default_bg: default_bg.jpg
+search: true
+share: true
+readtime: true
+triangleheader: true
+animated_fins: true
+fin_color: '255,255,255'
+url: http://hmfaysal.me/hmfaysal-omega-theme
+gems:
+- jekyll-feed
+- jekyll-archives
+- jekyll-paginate
+- jekyll-sitemap
+- jekyll-gist
+- jekyll-seo-tag
+jekyll-archives:
+  enabled:
+  - categories
+  - tags
+  layout: archive
+  permalinks:
+    tag: "/archive/tag/:name/"
+    category: "/archive/category/:name/"
+author:
+  name: Your Name
+  picture: your-photo.jpg
+  email: your@email.com
+  description: Some Details about yourself
+  twitter: 
+  facebook: 
+  github: 
+  linkedin: 
+  instagram: 
+  tumblr: 
+  google_plus: http://plus.google.com/123123123123132123
+google_analytics: 
+google_verify: 
+links:
+- title: Home
+  url: "/"
+  external: false
+  icon: home
+- title: Categories
+  url: "/categories"
+- title: Tags
+  url: "/tags"
+sitemap:
+  file: "/sitemap.xml"
+  exclude:
+  - "/atom.xml"
+  - "/feed.xml"
+  - "/feed/index.xml"
+  include_posts:
+  - "/index.html"
+future: true
+markdown: kramdown
+highlighter: rouge
+paginate: 6
+paginate_path: "/blog/:num/"
+kramdown:
+  input: GFM
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6

@@ -1,394 +1,747 @@
-<!DOCTYPE html>
-<html>
-<!--
-====================================================
-    __  ____  ______________  _______ ___    __ 
-   / / / /  |/  / ____/   \ \/ / ___//   |  / / 
-  / /_/ / /|_/ / /_  / /| |\  /\__ \/ /| | / /  
- / __  / /  / / __/ / ___ |/ /___/ / ___ |/ /___
-/_/ /_/_/  /_/_/   /_/  |_/_//____/_/  |_/_____/
-                                                     
-====================================================
-Owner Name: Hossain Mohammad Faysal
-Profile: https://www.facebook.com/hmfaysal
-Version: 1.1
-Description: Awesome dude, awesome life
-====================================================
--->
-<head>
-<meta charset="utf-8">
-<title>BLOG &vert; NOTEPAD</title>
-<meta name="description" content="The personal blog of Hossain Mohd. Faysal, a doctoral candidate in Electrical Engineering at University of Pennsylvania.">
-<meta name="keywords" content="Hossain, Mohd, Faysal, electrical, engineering, blog, university, pennsylvania, doha, Qatar">
+---
+title: Latest Posts
+layout: home
+description: Your personal blog.
+headline: Your Headline
+tags:
+- tags
+---
 
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="/Notepad/images/logo.png">
-<meta name="twitter:title" content="BLOG">
-<meta name="twitter:description" content="The personal blog of Hossain Mohd. Faysal, a doctoral candidate in Electrical Engineering at University of Pennsylvania.">
-<meta name="twitter:creator" content="@hmfaysal">
+{% if site.paginate %}
+	{% for post in paginator.posts %}
+		{% if site.wpm %}
+			{% assign readtime = post.content | strip_html | number_of_words | append: '.0' | divided_by:site.wpm %}
+		{% else %}
+			{% assign readtime = post.content | strip_html | number_of_words | append: '.0' | divided_by:180 %}
+		{% endif %}
 
-<!-- Open Graph -->
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="BLOG">
-<meta property="og:description" content="The personal blog of Hossain Mohd. Faysal, a doctoral candidate in Electrical Engineering at University of Pennsylvania.">
-<meta property="og:url" content="/Notepad/">
-<meta property="og:site_name" content="Notepad">
-<meta property="og:image" content="/Notepad/images/">
+		{% assign modifiedtime = post.modified | date: "%Y%m%d" %}
+		{% assign posttime = post.date | date: "%Y%m%d" %}
 
-
-
-
-
-<link rel="canonical" href="/Notepad/">
-<link href="/Notepad/feed.xml" type="application/atom+xml" rel="alternate" title="Notepad Feed">
-<link rel="author" href="https://plus.google.com/u/0/102602916593522619858?rel=author">
-
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="/Notepad/assets/css/vendor/font-awesome.min.css">
-    <link rel="stylesheet" href="/Notepad/assets/css/vendor/normalize.css">
-    <link rel="stylesheet" href="/Notepad/assets/css/vendor/nprogress.css">
-    <link rel="stylesheet" href="/Notepad/assets/css/vendor/foundation.min.css">
-    <link rel="stylesheet" href="/Notepad/assets/css/style.css">
-    <link rel="stylesheet" href="/Notepad/assets/css/post.css">
-
-
-
-
-
-<!-- Icons -->
-<!-- 16x16 -->
-<link rel="shortcut icon" href="/Notepad/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="/Notepad/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="/Notepad/images/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Notepad/images/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Notepad/images/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/Notepad/images/apple-touch-icon-144x144-precomposed.png">
-
-</head>
-<body class="home-template" itemscope itemtype="http://schema.org/WebPage">
-<header class="notepad-site-head">
-    <div class="notepad-site-head-menu">
-        <a class="notepad-blog-logo" href="/Notepad"><img src="/Notepad/images/logo.png" alt="Blog Logo" /></a>
-        
-        
-        <div class="notepad-blog-menu">      
-    <div class="notepad-mobile-menu show-for-small">
-        <a href="#"><i class="fa fa-bars"></i></a>
-    </div>
-    <ul class="notepad-menu">
-        <li class="notepad-mobile-close-btn show-for-small text-right">
-            <a href="#"><i class="fa fa-times"></i></a>
-        </li>
-
-            <li>
-            <a href="/Notepad/">Home</a>
-             </li>
-
-            <li>
-            <a href="/Notepad/featured">Featured Posts</a>
-             </li>
-
-            <li>
-            <a href="/Notepad/categories">Categories</a>
-             </li>
-
-            <li>
-            <a href="/Notepad/about">About</a>
-             </li>
-            
-           <li><a href="/Notepad/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
-    </ul>
+		{% if post.type == 'quote' %}
+<div class="row">
+	<article class="post col-md-10 col-md-offset-1">
+		<header class="post-header">
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}"><i class="fa fa-quote-left"></i> {{ post.excerpt | strip_html }}</a>
+	        </h2>
+	        <p class="light small text-center">
+	        	Share this Quote
+	        </p>
+	        <ul class="social-mini text-center">
+	        	<li>
+	            	<a href="https://twitter.com/intent/tweet?text=&quot;{{ post.title }}&quot;%20{{ site.url }}{{ post.url }}%20via%20&#64;{{ site.author.twitter }}"
+	                	onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip" title="Share on Twitter">
+	                    <i class="fa fa-twitter"></i>
+	                </a>
+	            </li>
+	            <li>
+	            	<a  href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}"
+	                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" data-toggle="tooltip" title="Share on Facebook">
+	                    <i class="fa fa-facebook"></i>
+	                </a>
+	            </li>
+	            <li>
+	                <a href="https://plus.google.com/share?url={{ site.url }}{{ post.url }}"
+	                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" data-toggle="tooltip" title="Share on Google plus">
+	                        <i class="fa fa-google-plus"></i>
+	                </a>
+	            </li>
+	        </ul>
+			<div class="post-body bordered-bottom text-center">
+			{% if post.description %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="{{ post.description }}" class="more-link btn btn-danger btn-large">
+			        <i class="fa fa-link"></i> permalink...
+			    </a>
+			{% else %}
+			    <a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="Read more about {{ post.title }}" class="more-link btn btn-danger btn-large">
+			        <i class="fa fa-link"></i> permalink...
+			    </a>
+			{% endif %}
+			</div>
+	    </header>
+	</article>
 </div>
-        <div class="clearfix"></div>
+		{% endif %}
+
+		{% if post.type == 'status' %}
+<div class="row">
+	<article class="post col-md-10 col-md-offset-1">
+		<header class="post-header">
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}" style="color: #c91b26"><i class="fa fa-retweet"></i> "{{ post.excerpt | strip_html }}"</a>
+			</h2>
+			<p class="light small text-center">
+				Share this Status
+			</p>
+			<ul class="social-mini text-center">
+				<li>
+					<a href="https://twitter.com/intent/tweet?text=&quot;{{ post.title }}&quot;%20{{ site.url }}{{ post.url }}%20via%20&#64;{{ site.author.twitter }}"
+						onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip" title="Share on Twitter">
+						<i class="fa fa-twitter"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+						data-toggle="tooltip" title="Share on Facebook">
+						<i class="fa fa-facebook"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://plus.google.com/share?url={{ site.url }}{{ post.url }}" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+						data-toggle="tooltip" title="Share on Google plus">
+						<i class="fa fa-google-plus"></i>
+					</a>
+				</li>
+			</ul>
+			<div class="post-info text-center small">
+				Status posted @
+				<time datetime="{{ post.date | date_to_xmlschema }}" class="post-time">{{ post.date | date: "%d %b %Y" }}</time>
+
+				{% if post.modified %}
+					{% if modifiedtime != posttime %} 
+				and <code>last modified on <time datetime="{{ post.modified | date: "%Y-%m-%d" }}" itemprop="dateModified">{{ post.modified | date: "%d %b %Y" }}</time></code>
+					{% endif %}
+				{% endif %} 
+				
+				in <span class="post-tags">
+					
+				{% for tag in post.categories %}
+				
+				<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" data-toggle="tooltip" title="Other posts from the {{ tag | capitalize }} category" rel="tag">
+					{{ tag | capitalize }}
+				</a>
+
+					{% unless forloop.last %}
+				&nbsp;&bull;&nbsp;
+					{% endunless %}
+				{% endfor %}
+				</span>&nbsp;
+
+				<span class="post-tags">by {{ site.author.name }}</span>
+				<div class="post-body bordered-bottom"></div>
+			</div>
+		</header>
+	</article>
+</div>
+		{% endif %}
+
+	    {% if post.type == 'video' %}
+<div class="row">
+	<article class="post post col-md-8 col-md-offset-2">
+		<header class="post-header">
+			{% if post.link %}
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}" style="color: #fff; background-color: #45ADA8; border-radius: 4px; padding: 10px">
+					<i class="fa fa-play-circle"></i> {{ post.title }}
+				</a>
+			{% else %}
+				<h2 class="post-title text-center super lighter bordered-bottom">
+					<a href="{{ site.url }}{{ post.url }}"><i class="fa fa-play-circle"></i> {{ post.title }}</a>
+			{% endif %}
+			</h2>
+
+			<div class="post-info text-center small">
+				<time datetime="{{ post.date | date_to_xmlschema }}" class="post-time">{{ post.date | date: "%d %b %Y" }}</time>
+			
+			{% if post.modified %}
+			
+				{% if modifiedtime != posttime %} 
+				and <code>last modified on <time datetime="{{ post.modified | date: "%Y-%m-%d" }}" itemprop="dateModified">{{ post.modified | date: "%d %b %Y" }}</time></code>
+				{% endif %}
+			{% endif %} 
+				in <span class="post-tags">
+
+				{% for tag in post.categories %}
+				<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" data-toggle="tooltip" title="Other posts from the {{ tag | capitalize }} category" rel="tag">
+					{{ tag | capitalize }}
+				</a>
+					{% unless forloop.last %}
+				&nbsp;&bull;&nbsp;
+					{% endunless %}
+				{% endfor %}
+				</span>
+				
+				{% if site.readtime %}
+				
+				&nbsp;<span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+					{% if readtime > 1 and readtime < 1.5 %}
+					1 minute read
+					{% endif %}
+
+					{% if readtime > 1.5 %}
+					<span class="time">{{ readtime }}</span> minutes read
+					{% endif %}
+					
+					{% if readtime < 1 %}
+					Less than 1 minute read
+					{% endif %}
+				</span>
+				{% endif %}
+			</div>
+		</header>
+
+		<div class="post-body bordered-bottom">
+			{% if post.video %}
+				{% assign video_embed = post.video | remove:'https://www.youtube.com/watch?v=' %}
+			<p>
+				<iframe width="940" height="529" src="//www.youtube.com/embed/{{ video_embed }}?theme=light&amp;color=white" frameborder="0"
+					allowfullscreen> </iframe>
+			</p>
+
+			<p class="lead">{{ post.content | strip_html | truncatewords:100 }}&hellip;</p>
+			{% else %}
+			<p class="lead">{{ post.excerpt }}&hellip;</p>
+			{% endif %}
+
+			<div class="text-center">
+			{% if post.description %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="{{ post.description }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> see more...
+				</a>
+			{% else %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="Read more about {{ post.title }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> see more...
+				</a>
+			{% endif %}
+			</div>
+		</div>
+	</article>
+</div>
+	    {% endif %}
+
+		{% if post.type == 'photo' %}
+<div class="row">
+	<article class="post post col-md-8 col-md-offset-2">
+		<header class="post-header">
+			{% if post.photo %}
+			<figure>
+				<a href="{{ site.url }}{{ post.url }}"><img src="{{ site.url }}/images/{{ post.photo }}" alt="{{ post.title }}" itemprop="image"></a>
+			</figure>
+			{% else %}
+			<figure>
+				<a href="{{ site.url }}{{ post.url }}"><img src="{{ site.url }}/images/{{ post.imagefeature }}" alt="{{ post.title }}" itemprop="image"></a>
+			</figure>
+			{% endif %}
+			
+			{% if post.link %}
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}" style="color: #fff; background-color: #45ADA8; border-radius: 4px; padding: 10px">
+					<i class="fa fa-picture-o"></i> {{ post.title }}
+				</a>
+			{% else %}
+			<h2 class="post-title text-center super lighter bordered-bottom">
+				<a href="{{ site.url }}{{ post.url }}">
+					<i class="fa fa-picture-o"></i> {{ post.title }}
+					</a>
+			{% endif %}
+			</h2>
+				
+			<div class="post-info text-center small">
+				<time datetime="{{ post.date | date_to_xmlschema }}" class="post-time">{{ post.date | date: "%d %b %Y" }}</time>
+				
+			{% if post.modified %}
+				{% if modifiedtime != posttime %}
+			and <code>last modified on <time datetime="{{ post.modified | date: "%Y-%m-%d" }}" itemprop="dateModified">{{ post.modified | date: "%d %b %Y" }}</time></code>
+				{% endif %}
+			{% endif %} 
+			
+			in <span class="post-tags">
+				
+			{% for tag in post.categories %}
+			<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" data-toggle="tooltip" title="Other posts from the {{ tag | capitalize }} category" rel="tag">
+				{{ tag | capitalize }}
+			</a>
+			{% unless forloop.last %}
+			&nbsp;&bull;&nbsp;
+			{% endunless %}
+			{% endfor %}
+			</span>
+			
+			{% if site.readtime %}
+				&nbsp;<span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+				{% if readtime > 1 and readtime < 1.5 %}
+					1 minute read
+				{% endif %}
+				{% if readtime > 1.5 %}
+					<span class="time">{{ readtime }}</span> minutes read
+				{% endif %}
+				{% if readtime < 1 %}
+					Less than 1 minute read
+				{% endif %}
+				</span>
+			{% endif %}
+			</div>
+		</header>
+
+		<div class="post-body bordered-bottom">
+			<p>{{ post.content | strip_html | truncatewords:100 }}&hellip;</p>
+			<div class="text-center">
+			{% if post.description %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="{{ post.description }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> read more...
+				</a>
+			{% else %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="Read more about {{ post.title }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> read more...
+				</a>
+			{% endif %}
+			</div>
+		</div>
+	</article>
+</div>
+		{% endif %}
+	        
+			
+		{% if post.type != 'video' and post.type != 'status' and post.type != 'quote' and post.type != 'photo' %}
+<div class="row">
+	<article class="post post col-md-8 col-md-offset-2">
+		<header class="post-header">
+		{% if post.featured %}
+			<div class="cursive">this post is featured</div>
+		{% endif %}
+		
+		{% if post.link %}
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}" style="color: #fff; background-color: #45ADA8; border-radius: 4px; padding: 10px">
+					<i class="fa fa-link"></i> {{ post.title }}
+				</a>
+		{% else %}
+				<h2 class="post-title text-center super lighter bordered-bottom">
+					<a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a> 
+		{% endif %}
+			</h2>
+
+			<div class="post-info text-center small">
+				<time datetime="{{ post.date | date_to_xmlschema }}" class="post-time">{{ post.date | date: "%d %b %Y" }}</time>
+
+			{% if post.modified %}
+				{% if modifiedtime != posttime %}
+					and <code>last modified on <time datetime="{{ post.modified | date: "%Y-%m-%d" }}" itemprop="dateModified">{{ post.modified | date: "%d %b %Y" }}</time></code>
+				{% endif %}
+			{% endif %} 
+				
+			in <span class="post-tags">
+				
+			{% for tag in post.categories %}
+				<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" data-toggle="tooltip" title="Other posts from the {{ tag | capitalize }} category" rel="tag">
+					{{ tag | capitalize }}
+				</a>
+			{% unless forloop.last %}
+				&nbsp;&bull;&nbsp;
+			{% endunless %}
+			{% endfor %}
+			</span>
+				
+			{% if site.readtime %}
+			&nbsp;<span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+				{% if readtime > 1 and readtime < 1.5 %}
+					1 minute read
+				{% endif %}
+
+				{% if readtime > 1.5 %}
+					<span class="time">{{ readtime }}</span> minutes read
+				{% endif %}
+
+				{% if readtime < 1 %}
+					Less than 1 minute read
+				{% endif %}
+				</span>
+			{% endif %}
+			</div>
+		</header>
+
+		<div class="post-body bordered-bottom">
+			{% assign excerptsize = post.excerpt | number_of_words %} 
+			
+		{% if excerptsize <= 100 and excerptsize >= 50 %}
+			<p class="lead">{{ post.excerpt | strip_html }}&hellip;</p>
+		{% else %}
+			<p>{{ post.content | strip_html | truncatewords:100 }}&hellip;</p>
+		{% endif %}
+			<div class="text-center">
+			{% if post.description %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="{{ post.description }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> read more...
+				</a>
+			{% else %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="Read more about {{ post.title }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> read more...
+				</a>
+			{% endif %}
+			</div>
+		</div>
+	</article>
+</div>
+		{% endif %}
+	{% endfor %}
+
+	{% if paginator.total_pages > 1 %}
+<div class="row text-center text-caps">
+	<div class="col-md-8 col-md-offset-2">
+		<nav class="pagination" role="navigation">
+		{% if paginator.previous_page %}
+			{% if paginator.previous_page == 1 %}
+        	<a class="newer-posts" href="{{ site.url }}">&larr; Newer Posts</a>
+			{% else %}
+			<a class="newer-posts" href="{{ site.url }}/blog/{{ paginator.previous_page }}">&larr; Newer Posts</a>
+			{% endif %}
+		{% endif %}
+    	<span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+		{% if paginator.next_page %}   
+    		<a class="older-posts" href="{{ site.url }}/blog/{{ paginator.next_page }}">Older Posts &rarr;</a>
+ 		{% endif %}
+		</nav>
     </div>
-    <div class="notepad-site-head-content" >
-        <div class="notepad-site-head-bg"></div>
-        <h1 class="notepad-blog-title">
-            <span class="notepad-site-head-title-bg">
-                Notepad
-            </span>
-        </h1>
-        <h2 class="notepad-blog-description">Blogging is fun</h2>
-    </div>
-</header>
+</div>
+	{% endif %}
+	{% else %}
+	{% for post in paginator.posts %}
 
+		{% assign readtime = post.content | strip_html | number_of_words | append: '.0' | divided_by:site.wpm %}
+		{% assign modifiedtime = post.modified | date: "%Y%m%d" %}
+		{% assign posttime = post.date | date: "%Y%m%d" %}
 
-<main class="notepad-content" role="main">
+		{% if post.type == 'quote' %}
+<div class="row">
+	<article class="post col-md-10 col-md-offset-1">
+		<header class="post-header">
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}"><i class="fa fa-quote-left"></i> {{ post.excerpt | strip_html }}</a>
+			</h2>
+			<p class="light small text-center">
+				Share this Quote
+			</p>
+			<ul class="social-mini text-center">
+				<li>
+					<a href="https://twitter.com/intent/tweet?text=&quot;{{ post.title }}&quot;%20{{ site.url }}{{ post.url }}%20via%20&#64;{{ site.author.twitter }}"
+						onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip" title="Share on Twitter">
+						<i class="fa fa-twitter"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+						data-toggle="tooltip" title="Share on Facebook">
+						<i class="fa fa-facebook"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://plus.google.com/share?url={{ site.url }}{{ post.url }}" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+						data-toggle="tooltip" title="Share on Google plus">
+						<i class="fa fa-google-plus"></i>
+					</a>
+				</li>
+			</ul>
+			<div class="post-body bordered-bottom text-center">
+			{% if post.description %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="{{ post.description }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> permalink...
+				</a>
+			{% else %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="Read more about {{ post.title }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> permalink...
+				</a>
+			{% endif %}
+			</div>
+		</header>
+	</article>
+</div>
 
-            
-	
-    <article class="notepad-index-post post row">
-        <div class="small-12 medium-3 large-2 columns datetime">
-            <span class="notepad-post-meta">
-                <time datetime="2014-07-23T00:00:00+06:00">
-                    <span class="day">
-                        23
-                    </span>
-                    <span class="month-year">
-                        July 2014
-                    </span>
-                </time>
-            </span>
-        </div>
-        <div class="small-12 medium-9 large-10 columns">
-            <header class="notepad-post-header">
-                <h3 class="notepad-post-title">
-                    <a href="/Notepad/webdevelopment/why-jekyll">
-                        Why Jekyll?
-                    </a>
-                </h3>
-            </header>
-            <section class="notepad-post-excerpt">
-                <p>Well, I guess it’s quite obvious that I really enjoy working with Jekyll — with good reasons — so let me just briefly suggest some of the benefits of using a static site generator in favor of a heavy dynamic,...</p>
-            </section>
-            
-                <div class="notepad-index-post-tags">
-                <a href="/Notepad/categories/index.html#webdevelopment" title="Other posts from the Webdevelopment category">Webdevelopment</a>
-                    
-                </div>
-            
-        </div>
-    </article>
-	
-    <article class="notepad-index-post post row">
-        <div class="small-12 medium-3 large-2 columns datetime">
-            <span class="notepad-post-meta">
-                <time datetime="2014-07-19T00:00:00+06:00">
-                    <span class="day">
-                        19
-                    </span>
-                    <span class="month-year">
-                        July 2014
-                    </span>
-                </time>
-            </span>
-        </div>
-        <div class="small-12 medium-9 large-10 columns">
-            <header class="notepad-post-header">
-                <h3 class="notepad-post-title">
-                    <a href="/Notepad/personal/introducing-notepad">
-                        Introducing Notepad
-                    </a>
-                </h3>
-            </header>
-            <section class="notepad-post-excerpt">
-                <p>Notepad is a Jekyll theme which is very simple, clean and beautiful. This theme is good for any blog. Main Features: Zurb Foundation 5 - css framework Fullscreen post covers with header wich will be bright or dark according to...</p>
-            </section>
-            
-                <div class="notepad-index-post-tags">
-                <a href="/Notepad/categories/index.html#personal" title="Other posts from the Personal category">Personal</a>
-                    
-                </div>
-            
-        </div>
-    </article>
-	
-    <article class="notepad-index-post post row">
-        <div class="small-12 medium-3 large-2 columns datetime">
-            <span class="notepad-post-meta">
-                <time datetime="2014-06-19T00:00:00+06:00">
-                    <span class="day">
-                        19
-                    </span>
-                    <span class="month-year">
-                        June 2014
-                    </span>
-                </time>
-            </span>
-        </div>
-        <div class="small-12 medium-9 large-10 columns">
-            <header class="notepad-post-header">
-                <h3 class="notepad-post-title">
-                    <a href="/Notepad/theme/documentation">
-                        Documentation
-                    </a>
-                </h3>
-            </header>
-            <section class="notepad-post-excerpt">
-                <p>General notes and suggestions for customizing HMFAYSAL Notepad Theme. Contents Basic Setup for a new Jekyll site Setup for an Existing Jekyll site Post Front Matter YAML Folder Structure Customization _config.yml Disqus Comments Owner/Author Information Google Analytics and Webmaster Tools...</p>
-            </section>
-            
-                <div class="notepad-index-post-tags">
-                <a href="/Notepad/categories/index.html#theme" title="Other posts from the Theme category">Theme</a>
-                    
-                </div>
-            
-        </div>
-    </article>
-	
-    <article class="notepad-index-post post row">
-        <div class="small-12 medium-3 large-2 columns datetime">
-            <span class="notepad-post-meta">
-                <time datetime="2013-05-23T00:00:00+06:00">
-                    <span class="day">
-                        23
-                    </span>
-                    <span class="month-year">
-                        May 2013
-                    </span>
-                </time>
-            </span>
-        </div>
-        <div class="small-12 medium-9 large-10 columns">
-            <header class="notepad-post-header">
-                <h3 class="notepad-post-title">
-                    <a href="/Notepad/theme/readability-feature-post">
-                        Post with Cover Image and Text
-                    </a>
-                </h3>
-            </header>
-            <section class="notepad-post-excerpt">
-                <p>This is a sample post with a large feature image up top and tons of text. You can set post image covers by using only Kramdown narkdown, just place something like this: ![cover-image](http://path-to-your-image.jpg) Odio ad blue bottle vinyl, 90’s narwhal...</p>
-            </section>
-            
-                <div class="notepad-index-post-tags">
-                <a href="/Notepad/categories/index.html#theme" title="Other posts from the Theme category">Theme</a>
-                    
-                </div>
-            
-        </div>
-    </article>
-	
-    <article class="notepad-index-post post row">
-        <div class="small-12 medium-3 large-2 columns datetime">
-            <span class="notepad-post-meta">
-                <time datetime="2012-05-22T00:00:00+06:00">
-                    <span class="day">
-                        22
-                    </span>
-                    <span class="month-year">
-                        May 2012
-                    </span>
-                </time>
-            </span>
-        </div>
-        <div class="small-12 medium-9 large-10 columns">
-            <header class="notepad-post-header">
-                <h3 class="notepad-post-title">
-                    <a href="/Notepad/articles/readability-post">
-                        Testing Readability with a Bunch of Text
-                    </a>
-                </h3>
-            </header>
-            <section class="notepad-post-excerpt">
-                <p>Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schlitz forage. Odio ad blue bottle vinyl, 90’s narwhal commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse Pinterest shabby chic Portland. Shoreditch...</p>
-            </section>
-            
-                <div class="notepad-index-post-tags">
-                <a href="/Notepad/categories/index.html#articles" title="Other posts from the Articles category">Articles</a>
-                    
-                </div>
-            
-        </div>
-    </article>
-	
-    <nav class="pagination" role="navigation">
-    
-    <span class="newer-posts faded"><i class="fa fa-chevron-left"></i> Newer</span>
-    
+		{% endif %}
 
-    
-    <span class="page-number">Page 1 of 2</span>
-    	 
-        <a class="older-posts" href="/Notepad/page2/">Older <i class="fa fa-chevron-right"></i></a>
-    	
-	</nav>
+	    {% if post.type == 'status' %}
+<div class="row">
+	<article class="post col-md-10 col-md-offset-1">
+		<header class="post-header">
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}" style="color: #c91b26"><i class="fa fa-retweet"></i> "{{ post.excerpt | strip_html }}"</a>
+			</h2>
+			<p class="light small text-center">
+				Share this Status
+			</p>
+			<ul class="social-mini text-center">
+				<li>
+					<a href="https://twitter.com/intent/tweet?text=&quot;{{ post.title }}&quot;%20{{ site.url }}{{ post.url }}%20via%20&#64;{{ site.author.twitter }}"
+						onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" data-toggle="tooltip" title="Share on Twitter">
+						<i class="fa fa-twitter"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
+						data-toggle="tooltip" title="Share on Facebook">
+						<i class="fa fa-facebook"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://plus.google.com/share?url={{ site.url }}{{ post.url }}" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+						data-toggle="tooltip" title="Share on Google plus">
+						<i class="fa fa-google-plus"></i>
+					</a>
+				</li>
+			</ul>
+			<div class="post-info text-center small">
+				Status posted @ <time datetime="{{ post.date | date_to_xmlschema }}" class="post-time">{{ post.date | date: "%d %b %Y" }}</time>
+			{% if post.modified %}
+				{% if modifiedtime != posttime %}
+				and <code>last modified on <time datetime="{{ post.modified | date: "%Y-%m-%d" }}" itemprop="dateModified">{{ post.modified | date: "%d %b %Y" }}</time></code>
+				{% endif %}
+			{% endif %}
+			
+				in <span class="post-tags">
+				{% for tag in post.categories %}
+					<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" data-toggle="tooltip" title="Other posts from the {{ tag | capitalize }} category" rel="tag">
+						{{ tag | capitalize }}
+					</a>
+				{% unless forloop.last %}
+					&nbsp;&bull;&nbsp;
+				{% endunless %}
+				{% endfor %}
+				</span>&nbsp;
+				<span class="post-tags">
+					by {{ site.author.name }}
+				</span>
+				<div class="post-body bordered-bottom"></div>
+			</div>
+		</header>
+	</article>
+</div>
+		{% endif %}
 
-</main>
-    <footer class="notepad-site-footer">
-    <div class="copyright">
-         <section>All content copyright <a href="/Notepad/about">Hossain Mohd Faysal</a> &copy; 2017 &bull; All rights reserved.</section>
-         <section>Proudly published with <a class="icon-ghost" href="https://jekyllrb.com/">Jekyll</a></section>
-    </div>
-    <div class="social-icons">
-        
-        
-        <a href="http://twitter.com/hmfaysal">
-            <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-                <i class="fa fa-twitter fa-stack-1x"></i>
-            </span>
-        </a>
-        
-        
-        <a href="https://plus.google.com/u/0/102602916593522619858">
-            <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-                <i class="fa fa-google-plus fa-stack-1x"></i>
-            </span>
-        </a>
-        
-        
-        <a href="http://instagram.com/hmfaysal">
-            <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-                <i class="fa fa-instagram fa-stack-1x"></i>
-            </span>
-        </a>
-        
-        
-        <a href="http://github.com/hmfaysal">
-            <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-                <i class="fa fa-github fa-stack-1x"></i>
-            </span>
-        </a>
-        
-        
-        <a href="http://facebook.com/hmfaysal">
-            <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-                <i class="fa fa-facebook fa-stack-1x"></i>
-            </span>
-        </a>
-        
-    </div>
-    
-    <div class="cf"></div>
-</footer>
+	    {% if post.type == 'video' %}
+<div class="row">
+	<article class="post post col-md-8 col-md-offset-2">
+		<header class="post-header">
+		{% if post.link %}
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}" style="color: #fff; background-color: #45ADA8; border-radius: 4px; padding: 10px"><i class="fa fa-play-circle"></i> {{ post.title }}</a>
+		{% else %}
+			<h2 class="post-title text-center super lighter bordered-bottom">
+				<a href="{{ site.url }}{{ post.url }}"><i class="fa fa-play-circle"></i> {{ post.title }}</a>
+		{% endif %}
+			</h2>
+			<div class="post-info text-center small">
+				<time datetime="{{ post.date | date_to_xmlschema }}" class="post-time">{{ post.date | date: "%d %b %Y" }}</time>
+				{% if post.modified %}
+					{% if modifiedtime != posttime %}
+					and <code>last modified on <time datetime="{{ post.modified | date: "%Y-%m-%d" }}" itemprop="dateModified">{{ post.modified | date: "%d %b %Y" }}</time></code>
+					{% endif %}
+				{% endif %}
+				
+				in <span class="post-tags">
+				{% for tag in post.categories %}
+					<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" data-toggle="tooltip" title="Other posts from the {{ tag | capitalize }} category" rel="tag">
+						{{ tag | capitalize }}
+					</a>
+				{% unless forloop.last %}
+					&nbsp;&bull;&nbsp;
+				{% endunless %}
+				{% endfor %}
+				</span>
+				
+				{% if site.readtime %}
+				&nbsp;<span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+					{% if readtime > 1 and readtime < 1.5 %}
+						1 minute read
+					{% endif %}
+					{% if readtime > 1.5 %}
+						<span class="time">{{ readtime }}</span> minutes read
+					{% endif %}
+					{% if readtime < 1 %}
+						Less than 1 minute read
+					{% endif %}
+				</span>
+				{% endif %}
+			</div>
+		</header>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/Notepad/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-    <script src="/Notepad/assets/js/vendor/modernizr.js"></script>
-    <script src="/Notepad/assets/js/foundation.min.js"></script>
-    
-    <script src="/Notepad/assets/js/notepad.js"></script>
-    <script src="/Notepad/assets/js/scripts.min.js"></script>
-    <script src="/Notepad/assets/js/vendor/nprogress.js"></script>
+		<div class="post-body bordered-bottom">
+		{% if post.video %} 
+			{% assign video_embed = post.video | remove:'https://www.youtube.com/watch?v=' %}
+			<p>
+				<iframe width="940" height="529" src="//www.youtube.com/embed/{{ video_embed }}?theme=light&amp;color=white" frameborder="0"
+					allowfullscreen> </iframe>
+			</p>
+			<p class="lead">{{ post.content | strip_html | truncatewords:100 }}&hellip;</p>
+		{% else %}
+			<p class="lead">{{ post.excerpt }}&hellip;</p>
+		{% endif %}
 
-    <script>
-      $(document).foundation();
-    </script>
-    <script type='text/javascript'>console.log("HMFaysal Notepad Theme Version 2.0");</script>
-    <script type='text/javascript'>console.log("https://alum.mit.edu/www/hmfaysal");</script>
+			<div class="text-center">
+			{% if post.description %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="{{ post.description }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> see more...
+				</a>
+			{% else %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="Read more about {{ post.title }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> see more...
+				</a>
+			{% endif %}
+			</div>
+		</div>
+	</article>
+</div>
+		{% endif %}
 
+	    {% if post.type == 'photo' %}
+<div class="row">
+	<article class="post post col-md-8 col-md-offset-2">
+		<header class="post-header">
+		{% if post.photo %}
+			<figure>
+				<a href="{{ site.url }}{{ post.url }}"><img src="{{ site.url }}/images/{{ post.photo }}" alt="{{ post.title }}" itemprop="image"></a>
+			</figure>
+		{% else %}
+			<figure>
+				<a href="{{ site.url }}{{ post.url }}"><img src="{{ site.url }}/images/{{ post.imagefeature }}" alt="{{ post.title }}" itemprop="image"></a>
+			</figure>
+		{% endif %}
+		
+		{% if post.link %}
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}" style="color: #fff; background-color: #45ADA8; border-radius: 4px; padding: 10px">
+					<i class="fa fa-picture-o"></i> {{ post.title }}
+				</a>
+		{% else %}
+			<h2 class="post-title text-center super lighter bordered-bottom">
+				<a href="{{ site.url }}{{ post.url }}">
+					<i class="fa fa-picture-o"></i> {{ post.title }}
+				</a>
+		{% endif %}
+		</h2>
 
-<!-- Asynchronous Google Analytics snippet -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			<div class="post-info text-center small">
+				<time datetime="{{ post.date | date_to_xmlschema }}" class="post-time">{{ post.date | date: "%d %b %Y" }}</time>
+			
+			{% if post.modified %}
+				{% if modifiedtime != posttime %}
+				and <code>last modified on <time datetime="{{ post.modified | date: "%Y-%m-%d" }}" itemprop="dateModified">{{ post.modified | date: "%d %b %Y" }}</time></code>
+				{% endif %}
+			{% endif %}
 
-  ga('create', 'UA-39365944-7', 'auto');
-  ga('require', 'displayfeatures');
-  ga('send', 'pageview');
+				in <span class="post-tags">
+				{% for tag in post.categories %}
+					<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" data-toggle="tooltip" title="Other posts from the {{ tag | capitalize }} category" rel="tag">
+						{{ tag | capitalize }}
+					</a>
+				{% unless forloop.last %}
+				&nbsp;&bull;&nbsp;
+				{% endunless %}
+				{% endfor %}
+				</span>
 
-</script>
+				{% if site.readtime %}
+				&nbsp;<span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
 
-<script>NProgress.start();var interval=setInterval(function(){NProgress.inc()},1000);jQuery(window).load(function(){clearInterval(interval);NProgress.done()});jQuery(window).unload(function(){NProgress.start()});</script>  
-</body>
-</html>
+				{% if readtime > 1 and readtime < 1.5 %}
+					1 minute read{% endif %}{% if readtime > 1.5 %}<span class="time">{{ readtime }}</span> minutes read
+				{% endif %}
+
+				{% if readtime< 1 %}
+					Less than 1 minute read
+				{% endif %}
+				</span>
+				{% endif %}
+			</div>
+		</header>
+
+		<div class="post-body bordered-bottom">
+			<p>{{ post.content | strip_html | truncatewords:100 }}&hellip;</p>
+			<div class="text-center">
+			{% if post.description %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="{{ post.description }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> read more...
+				</a>
+			{% else %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="Read more about {{ post.title }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> read more...
+				</a>
+			{% endif %}
+			</div>
+		</div>
+	</article>
+</div>
+		{% endif %}
+
+	    {% if post.type != 'video' and post.type != 'status' and post.type != 'quote' and post.type != 'photo' %}
+<div class="row">
+	<article class="post post col-md-8 col-md-offset-2">
+		<header class="post-header">
+		{% if post.featured %}
+			<div class="cursive">this post is featured</div>
+		{% endif %}
+		
+		{% if post.link %}
+			<h2 class="post-title text-center super lighter">
+				<a href="{{ site.url }}{{ post.url }}" style="color: #fff; background-color: #45ADA8; border-radius: 4px; padding: 10px">
+					<i class="fa fa-link"></i> {{ post.title }}
+				</a>
+		{% else %}
+			<h2 class="post-title text-center super lighter bordered-bottom">
+				<a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a> {% endif %}
+			</h2>
+
+			<div class="post-info text-center small">
+				<time datetime="{{ post.date | date_to_xmlschema }}" class="post-time">{{ post.date | date: "%d %b %Y" }}</time>
+			{% if post.modified %}
+				{% if modifiedtime != posttime %} 
+				and <code>last modified on <time datetime="{{ post.modified | date: "%Y-%m-%d" }}" itemprop="dateModified">{{ post.modified | date: "%d %b %Y" }}</time></code>
+				{% endif %}
+			{% endif %}
+
+			in <span class="post-tags">
+			{% for tag in post.categories %}
+			<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" data-toggle="tooltip" title="Other posts from the {{ tag | capitalize }} category" rel="tag">
+				{{ tag | capitalize }}
+			</a>
+			{% unless forloop.last %}
+			&nbsp;&bull;&nbsp;
+			{% endunless %}
+			{% endfor %}
+			</span>
+
+			{% if site.readtime %}
+				&nbsp;<span class="post-tags"><i class="fa fa-clock-o"></i>&nbsp;
+				
+				{% if readtime > 1 and readtime < 1.5 %}
+					1 minute read
+				{% endif %}
+
+				{% if readtime > 1.5 %}
+					<span class="time">{{ readtime }}</span> minutes read
+				{% endif %}
+				
+				{% if readtime < 1 %}
+					Less than 1 minute read
+				{% endif %}
+				</span>
+			{% endif %}
+			</div>
+		</header>
+
+		<div class="post-body bordered-bottom">
+			{% assign excerptsize = post.excerpt | number_of_words %}
+			
+		{% if excerptsize <= 100 and excerptsize >= 50 %}
+			<p class="lead">{{ post.excerpt | strip_html }}&hellip;</p>
+		{% else %}
+			<p>{{ post.content | strip_html | truncatewords:100 }}&hellip;</p>
+		{% endif %}
+
+			<div class="text-center">
+			{% if post.description %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="{{ post.description }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> read more...
+				</a>
+			{% else %}
+				<a href="{{ site.url }}{{ post.url }}" data-toggle="tooltip" title="Read more about {{ post.title }}" class="more-link btn btn-danger btn-large">
+					<i class="fa fa-link"></i> read more...
+				</a>
+			{% endif %}
+			</div>
+		</div>
+	</article>
+</div>
+		{% endif %}
+
+	{% endfor %}  
+{% endif %}
