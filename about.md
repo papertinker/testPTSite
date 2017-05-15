@@ -1,11 +1,16 @@
 ---
-layout: page
-permalink: /about/index.html
 title: Hossain Mohd Faysal
-tags: [Hossain, Mohd, Faysal, hmfaysal]
+permalink: "/about/index.html"
+layout: page
+tags:
+- Hossain
+- Mohd
+- Faysal
+- hmfaysal
 imagefeature: fourseasons.jpg
 chart: true
 ---
+
 <figure>
   <img src="{{ site.url }}/images/hossain-faysal.jpg" alt="Hossain Mohammad Faysal">
   <figcaption>Hossain Mohammad Faysal</figcaption>

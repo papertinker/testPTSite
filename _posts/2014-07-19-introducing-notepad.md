@@ -1,11 +1,12 @@
 ---
+title: Introducing Notepad
+date: 2014-07-19 00:00:00 +06:00
+categories:
+- personal
 layout: post
-title: "Introducing Notepad"
 description: 
 headline: 
-modified: 2014-07-19
-category: personal
-tags: []
+modified: 2014-07-19 06:00:00 +06:00
 imagefeature: cover1.jpg
 comments: true
 mathjax: 

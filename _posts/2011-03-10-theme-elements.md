@@ -1,10 +1,14 @@
 ---
-layout: post
 title: Theme Elements
-description: "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
-modified: 2013-05-31
-category: articles
-tags: [sample post]
+date: 2011-03-10 00:00:00 +06:00
+categories:
+- articles
+tags:
+- sample post
+layout: post
+description: 'Just about everything you''ll need to style in the theme: headings,
+  paragraphs, blockquotes, tables, code blocks, and more.'
+modified: 2013-05-31 06:00:00 +06:00
 imagefeature: cover6.jpg
 comments: true
 share: true

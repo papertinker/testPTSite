@@ -1,9 +1,13 @@
 ---
+title: Post with Cover Image and Text
+date: 2013-05-23 00:00:00 +06:00
+categories:
+- theme
+tags:
+- sample post
+- readability
 layout: post
-title: "Post with Cover Image and Text"
-description: "Custom written post descriptions are the way to go... if you're not lazy."
-category: theme
-tags: [sample post, readability]
+description: Custom written post descriptions are the way to go... if you're not lazy.
 imagefeature: cover9.jpg
 share: true
 ---

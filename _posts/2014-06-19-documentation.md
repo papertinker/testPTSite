@@ -1,9 +1,12 @@
 ---
+title: Documentation
+date: 2014-06-19 00:00:00 +06:00
+categories:
+- theme
+tags:
+- how-to
 layout: post
-title: "Documentation"
-description: "Instructions on how to install and customize the HMFAYSAL Notepad Theme."
-category: theme
-tags: [how-to]
+description: Instructions on how to install and customize the HMFAYSAL Notepad Theme.
 imagefeature: cover10.jpg
 ---
 
