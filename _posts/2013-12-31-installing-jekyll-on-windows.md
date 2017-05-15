@@ -1,14 +1,19 @@
 ---
+title: Installing Jekyll on Windows
+date: 2013-12-31 00:00:00 -05:00
+categories:
+- Theme-Setup
+tags:
+- Jekyll
+- Installation
 layout: post
-title: "Installing Jekyll on Windows"
 description: Simple 10 step method to get started with Jekyll
 headline: 
-category: Theme-Setup
-tags: [Jekyll, Installation]
 imagefeature: picture-25.jpg
 comments: true
 mathjax: 
 ---
+
 Welcome to HMFAYSAL OMEGA Theme for Jekyll. In this tutorial, I will show you how you can install and get started with Jekyll in 10 easy steps. While Jekyll itself is very easy to get started with, Jekyll has several dependencies which needed to be installed in order for Jekyll to work properly. The process of installing these requirements can be a little frustrating on any system, and it can be a tad bit more frustrating if you own a Windows PC. In this article, I will provide step-by-step details about installing Jekyll on windows and all its dependencies properly and will try to elaborate on the errors that one might encounter during the steps.
 
 <section>

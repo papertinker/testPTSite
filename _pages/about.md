@@ -1,8 +1,9 @@
 ---
-layout: page
-permalink: /about/
 title: About Me
-tags: [tags]
+permalink: "/about/"
+tags:
+- tags
+layout: page
 ---
 
 # Your about page

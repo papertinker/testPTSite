@@ -1,10 +1,13 @@
 ---
-layout: page
-permalink: /license/
 title: LICENSE
-description: "License for Jekyll theme HMFAYSAL OMEGA."
-headline: "The MIT License"
-tags: [Jekyll, theme, license]
+permalink: "/license/"
+tags:
+- Jekyll
+- theme
+- license
+layout: page
+description: License for Jekyll theme HMFAYSAL OMEGA.
+headline: The MIT License
 image:
   feature: 
 ---

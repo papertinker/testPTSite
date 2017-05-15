@@ -1,14 +1,19 @@
 ---
+title: Fancy Some Columns?
+date: 2014-01-07 00:00:00 -05:00
+categories:
+- Sample-Posts
+tags:
+- sample post
+- columns
 layout: post
-title: "Fancy Some Columns?"
-description: "Test of Twitter Bootstrap's 12 column setup"
+description: Test of Twitter Bootstrap's 12 column setup
 headline: 
-category: Sample-Posts
-tags: [sample post, columns]
 imagefeature: picture-30.jpg
 comments: true
 mathjax: 
 ---
+
 Some Premium WordPress themes feature multi-column text entries, which is quite important for academics and engineers like myself for content presentation. HMFAYSAL OMEGA is the first Jekyll Theme to showcase multi-column text entries. HMFAYSAL OMEGA features four types of multi-column configuration, the first being the single column, the others are two, three and four columns. To insert a two-column text entry, simply enter this markup:
 
     <div class="col-md-6">  

@@ -1,9 +1,13 @@
 ---
+title: Sample Link Post
+date: 2014-01-05 00:00:00 -05:00
+categories:
+- Sample-Posts
+tags:
+- sample post
+- link post
 layout: post
-title: "Sample Link Post"
-description: "Example and code for using link posts."
-category: Sample-Posts
-tags: [sample post, link post]
+description: Example and code for using link posts.
 comments: true
 link: http://alum.mit.edu/www/hmfaysal
 ---

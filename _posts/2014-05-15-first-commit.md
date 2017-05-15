@@ -1,20 +1,21 @@
 ---
-layout: post
 title: First Commit
-description: "Its ON, baby"
-headline: "Let's Fire up the Engines"
-categories: personal
-tags: 
-  - blogging
-  - jekyll
-image: 
-  feature: "website-speed.jpg"
+date: 2014-05-15 00:00:00 -04:00
+categories:
+- personal
+tags:
+- blogging
+- jekyll
+layout: post
+description: Its ON, baby
+headline: Let's Fire up the Engines
+image:
+  feature: website-speed.jpg
   credit: spreadeffect.com
-  creditlink: "http://www.spreadeffect.com/blog/improve-website-speed/"
+  creditlink: http://www.spreadeffect.com/blog/improve-website-speed/
 comments: false
-mathjax: null
+mathjax: 
 featured: true
-published: true
 ---
 
 >&quot;The beginning is the most important part of the work.&quot;

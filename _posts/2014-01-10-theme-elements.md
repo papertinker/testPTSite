@@ -1,14 +1,20 @@
 ---
+title: Theme Elements
+date: 2014-01-10 00:00:00 -05:00
+categories:
+- Theme-Setup
+tags:
+- Jekyll
+- HMFAYSAL OMEGA
 layout: post
-title: "Theme Elements"
-description: Theme Elements will save you tons of time working on the site content. Now you'll be able to create complex layouts within minutes.
-category: Theme-Setup
+description: Theme Elements will save you tons of time working on the site content.
+  Now you'll be able to create complex layouts within minutes.
 headline: Discover the theme elements
-tags: [Jekyll, HMFAYSAL OMEGA]
 imagefeature: picture-38.jpg
 comments: true
 mathjax: true
 ---
+
 I've put together a little post to introduce you to the HMFAYSAL OMEGA theme and get you started with Markdown. Go ahead and edit this post to get going and learn how it all works!
 
 <section>

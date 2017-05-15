@@ -1,9 +1,14 @@
 ---
+title: A Post with Images
+date: 2014-01-03 00:00:00 -05:00
+categories:
+- photos
+tags:
+- sample post
+- images
+- test
 layout: post
-title: "A Post with Images"
-description: "Examples and code for displaying images in posts."
-category: photos
-tags: [sample post, images, test]
+description: Examples and code for displaying images in posts.
 imagefeature: picture-15.jpg
 comments: true
 share: true

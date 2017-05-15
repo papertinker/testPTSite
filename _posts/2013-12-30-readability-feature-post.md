@@ -1,11 +1,14 @@
 ---
+title: Post with Large Feature Image and Text
+date: 2013-12-30 00:00:00 -05:00
+categories:
+- Sample-Posts
+tags:
+- sample post
+- readability
 layout: post
-title: "Post with Large Feature Image and Text"
-description: "Custom written post descriptions are the way to go... if you're not lazy."
-category: Sample-Posts
-tags: [sample post, readability]
-modified: 2013-06-30
-
+description: Custom written post descriptions are the way to go... if you're not lazy.
+modified: 2013-06-29 20:00:00 -04:00
 imagefeature: tokyo.jpg
 comments: true
 share: true
